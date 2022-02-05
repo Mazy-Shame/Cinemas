@@ -6,8 +6,14 @@ const PORT = process.env.PORT || 8080
 
 const userRouter = require('./routes/user.routes')
 
+
+
 const app = express()
 
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
 
 app.use(express.json())
 app.use('/api', userRouter)

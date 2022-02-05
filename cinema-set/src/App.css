@@ -1,0 +1,31 @@
+
+
+.container{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.loginupContainer{
+    min-height: 70px;
+    background-color: cadetblue;
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.navBarContainer{
+    margin-right: 20px;
+    margin-left: 20px;
+    min-width: 100px;
+    max-width: max-content;
+    min-height: 500px;
+    background-color:blue;
+}
+
+.contentContainer{
+    margin-right: 20px;
+    flex: 1;
+    background-color:brown;
+}
