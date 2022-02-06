@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
 import style from './LoginUp.module.css'
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function LoginUp() {
 
+    const dispatch = useDispatch()
+
+    const getUsers = () => {
+        axios.get('http://192.168.31.37:8080/api/users').then( res => {
+            let data = res.data
+            dispatch({type:"GET-USERS", users:data})
+        })
+    }
+
+    useEffect(() => {
+        getUsers()
+    }, []);
+
+    
+    const state = useSelector(state => state)
+    console.log(state.UserReducer.isLogin);
 
     const [isClick, setisClick] = useState(false);
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
-    const [login, setlogin] = useState('Login In');
-    const [isReg, setisReg] = useState(false);
 
     async function loginIn(event) {
     event.preventDefault()
@@ -23,23 +39,14 @@ function LoginUp() {
         setisClick(true)
     }
 
-    let data
-    await axios.get('http://192.168.31.37:8080/api/users').then( res => {
-        data = res.data
-    })
 
-
-    data.forEach( (el) => {
+    state.UserReducer.allUsers.forEach( (el) => {
         if (el.login == email && el.password == password){
 
             Name = el.login
-            setisReg(true)
-            setlogin(Name)
+            dispatch({type: "SET-LOGIN", name: Name})
         }
     })
-
-    
-    
     }
 
 
@@ -52,13 +59,26 @@ function LoginUp() {
         }
     }
 
+    const unLogin = () => {
+        dispatch({type:"LOGIN-OUT"})
+    }
+
+    if (state.UserReducer.isLogin){
+        return(
+            <div>
+                <button className={style.dropbtn} disabled >{state.UserReducer.userLogin}</button>
+                <button className={style.exitbtn} onClick={() => unLogin()} >LoginOut</button>
+            </div>
+        )
+    }
+    else{
     return(
       <div>
         <div className={style.dropdown}>
         
         {isClick? 
         <div>
-            <button className={style.dropbtn} onClick={() => logBtnOn()} disabled={isReg}>{login}</button>
+            <button className={style.dropbtn} onClick={() => logBtnOn()} disabled={state.UserReducer.isLogin}>{state.UserReducer.userLogin}</button>
 
             <div className={style.logform}>
 
@@ -71,13 +91,14 @@ function LoginUp() {
 
         </div>
         : 
-        <button className={style.dropbtn} onClick={() => logBtnOn()} disabled={isReg}>{login}</button>}
+        <button className={style.dropbtn} onClick={() => logBtnOn()} disabled={state.UserReducer.isLogin}>{state.UserReducer.userLogin}</button>}
         
         
 
         </div>
       </div>
   )
+}
 }
 
 export default LoginUp;
