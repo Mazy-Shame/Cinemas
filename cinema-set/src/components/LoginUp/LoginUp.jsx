@@ -21,7 +21,6 @@ function LoginUp() {
 
     
     const state = useSelector(state => state)
-    console.log(state.UserReducer.isLogin);
 
     const [isClick, setisClick] = useState(false);
     const [email, setemail] = useState('');
@@ -83,8 +82,8 @@ function LoginUp() {
             <div className={style.logform}>
 
             <form onSubmit={loginIn}>
-            <input name="" id="" className={style.mail} onChange={(event) => setemail(event.target.value)} value={email}/>
-            <input type="password" name="" id="" className={style.password} onChange={(event) => setpassword(event.target.value)} value={password} />
+            <input name="" id="" className={style.mail} onChange={(event) => setemail(event.target.value)} value={email} placeholder="Введите логин"/>
+            <input type="password" name="" id="" className={style.password} onChange={(event) => setpassword(event.target.value)} value={password} placeholder="Введите пароль"/>
             <button className={style.sendbtn}>Login In</button>
             </form>
             </div>

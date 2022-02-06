@@ -8,7 +8,7 @@
 
 .loginupContainer{
     min-height: 70px;
-    background-color: cadetblue;
+    background-color: #950740;
     margin: 20px;
     display: flex;
     justify-content: flex-end;
@@ -21,7 +21,7 @@
     min-width: 100px;
     max-width: max-content;
     min-height: 500px;
-    background-color:blue;
+    background-color:#6F2232;
 }
 
 .contentContainer{

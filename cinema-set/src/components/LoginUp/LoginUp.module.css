@@ -10,31 +10,33 @@
     background: linear-gradient(to top left, #009933 -8%, #9966ff 100%);
     min-width: 300px;
     min-height: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 32px 25px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
     right: 0%;
 }
 
 .dropbtn {
-    background-color: #4CAF50;
+    background-color: #C3073F;
     color: white;
     padding: 16px;
     font-size: 16px;
     border: none;
     transition: 1s;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.2);
 }
 
 
 .mail {
-    display: block;
+    display: flex;
     padding:10px;
     border-radius:10px;
+
 }
 
 .password {
-    display: block;
+    display: flex;
     padding:10px;
     border-radius:10px;
 }
@@ -46,6 +48,7 @@
     font-size: 16px;
     border: none;
     transition: 1s;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.2);
 }
 
 .exitbtn:hover {
@@ -53,4 +56,19 @@
 }
 
 .dropbtn:hover {background-color: #3e8e41;}
+
+.sendbtn{
+    display: flex;
+    background-color: #C3073F;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    transition: 1s;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.2);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 

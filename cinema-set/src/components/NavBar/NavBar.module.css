@@ -1,0 +1,13 @@
+.header{
+    margin: 10px;
+    display: inline-block;
+    position: relative;
+    letter-spacing: .05em;
+    text-shadow:
+      1px 1px #950740,
+      -1px 1px #950740,
+      -1px -1px #950740,
+      4px -4px #950740;
+    color: #f3f3f3;
+    transition: all 1s;
+}

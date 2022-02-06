@@ -1,5 +1,6 @@
 import './App.css';
 import LoginUp from './components/LoginUp/LoginUp.jsx';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       
       
       <div className="navBarContainer">
-
+        <NavBar/>
       </div>
       
       <div className="contentContainer">
