@@ -3,6 +3,7 @@ const defaultState = {
     userLogin: "Login In",
     isLogin: false,
     isAdmin: false,
+    user_id: null
   
   }
   
@@ -20,14 +21,16 @@ const defaultState = {
           return({
             ...state,
             isLogin: true,
-            userLogin: action.name
+            userLogin: action.name,
+            user_id: action.id
           })
 
         case "LOGIN-OUT":
           return({
             ...state,
             isLogin: false,
-            userLogin: "Login In"
+            userLogin: "Login In",
+            user_id: null
           })
 
   

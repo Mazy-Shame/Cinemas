@@ -72,3 +72,7 @@
     justify-content: center;
 }
 
+.profileLink{
+    text-decoration: none;
+    color: white;
+}

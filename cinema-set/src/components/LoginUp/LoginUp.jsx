@@ -3,10 +3,13 @@ import style from './LoginUp.module.css'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function LoginUp() {
 
     const dispatch = useDispatch()
+
+    const state = useSelector(state => state)
 
     const getUsers = () => {
         axios.get('http://192.168.31.37:8080/api/users').then( res => {
@@ -16,11 +19,15 @@ function LoginUp() {
     }
 
     useEffect(() => {
-        getUsers()
+
+        if (state.UserReducer.allUsers == null){
+            getUsers()
+        }
+        
     }, []);
 
     
-    const state = useSelector(state => state)
+
 
     const [isClick, setisClick] = useState(false);
     const [email, setemail] = useState('');
@@ -43,7 +50,7 @@ function LoginUp() {
         if (el.login == email && el.password == password){
 
             Name = el.login
-            dispatch({type: "SET-LOGIN", name: Name})
+            dispatch({type: "SET-LOGIN", name: Name, id: el.user_id})
         }
     })
     }
@@ -62,11 +69,17 @@ function LoginUp() {
         dispatch({type:"LOGIN-OUT"})
     }
 
+    console.log(state);
+
     if (state.UserReducer.isLogin){
         return(
             <div>
-                <button className={style.dropbtn} disabled >{state.UserReducer.userLogin}</button>
-                <button className={style.exitbtn} onClick={() => unLogin()} >LoginOut</button>
+                <button className={style.dropbtn} disabled >
+                    <Link to={`/userprofile/${state.UserReducer.user_id}`} className={style.profileLink}>{state.UserReducer.userLogin}</Link>
+                </button>
+                <button className={style.exitbtn} onClick={() => unLogin()} >
+                <Link to={`/`} className={style.profileLink}>LoginOut</Link>
+                </button>
             </div>
         )
     }

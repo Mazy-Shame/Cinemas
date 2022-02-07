@@ -20,8 +20,6 @@ function NavBar() {
     }, []);
     
 
-    console.log(state);
-
     if (state.cinemasList != null){
         return(
             <div>
